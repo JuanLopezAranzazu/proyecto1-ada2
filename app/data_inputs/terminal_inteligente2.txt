@@ -1,0 +1,3 @@
+francesa
+ancestro
+1 2 3 2 1
