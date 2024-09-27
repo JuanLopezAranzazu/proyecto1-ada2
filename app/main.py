@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import filedialog
 from terminal_inteligente import brute_force_ti, dp_ti, greedy_ti
 from subasta_publica import brute_force_sp, dp_sp, greedy_sp
+import timeit
 
 class App:
   def __init__(self, root):
@@ -117,18 +118,30 @@ class App:
         self.text_results.delete(1.0, tk.END)
         self.text_results.insert(tk.END, "Error: Cargar archivo primero\n")
         return
+      
+      start_time = timeit.default_timer()
       result=self.algorithms_ti[algorithm](stringA, stringB, operations_dict)
+      elapsed_time = timeit.default_timer() - start_time
+      print(result)
+      print(f"Tiempo de ejecución: {elapsed_time:.10f} segundos")
+
     elif problem == "Subasta Pública":
       # Validar que los datos estén cargados
       if not 'A' in globals() or not 'B' in globals() or not 'n' in globals() or not 'offers' in globals():
         self.text_results.delete(1.0, tk.END)
         self.text_results.insert(tk.END, "Error: Cargar archivo primero\n")
         return
+      
+      start_time = timeit.default_timer()
       result=self.algorithms_sp[algorithm](A, B, offers)
+      elapsed_time = timeit.default_timer() - start_time
+      print(result)
+      print(f"Tiempo de ejecución: {elapsed_time:.10f} segundos")
 
     # Mostrar resultados en el Text widget
     self.text_results.delete(1.0, tk.END)
     self.text_results.insert(tk.END, result)
+    self.text_results.insert(tk.END, f"\nTiempo de ejecución: {elapsed_time:.10f} segundos\n")
 
 if __name__ == "__main__":
   root = tk.Tk()
