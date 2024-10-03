@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
-from terminal_inteligente import brute_force_ti, dp_ti, greedy_ti
+from terminal_inteligente import brute_force_ti, dp_ti, greedy_ti, uniform_cost_ti
 from subasta_publica import brute_force_sp, dp_sp, greedy_sp
 import timeit
 
@@ -52,6 +52,7 @@ class App:
       "Fuerza Bruta": brute_force_ti.brute_force,
       "Programación Dinámica": dp_ti.dynamic_programming,
       "Programación Voraz": greedy_ti.greedy,
+      "Costo Uniforme": uniform_cost_ti.uniform_cost,
     }
 
     self.algorithms_sp={
@@ -119,6 +120,12 @@ class App:
         self.text_results.insert(tk.END, "Error: Cargar archivo primero\n")
         return
       
+      # Validar que el algoritmo esté implementado
+      if algorithm not in self.algorithms_ti:
+        self.text_results.delete(1.0, tk.END)
+        self.text_results.insert(tk.END, "Error: Algoritmo no implementado\n")
+        return
+
       start_time = timeit.default_timer()
       result=self.algorithms_ti[algorithm](stringA, stringB, operations_dict)
       elapsed_time = timeit.default_timer() - start_time
@@ -130,6 +137,12 @@ class App:
       if not 'A' in globals() or not 'B' in globals() or not 'n' in globals() or not 'offers' in globals():
         self.text_results.delete(1.0, tk.END)
         self.text_results.insert(tk.END, "Error: Cargar archivo primero\n")
+        return
+      
+      # Validar que el algoritmo esté implementado
+      if algorithm not in self.algorithms_sp:
+        self.text_results.delete(1.0, tk.END)
+        self.text_results.insert(tk.END, "Error: Algoritmo no implementado\n")
         return
       
       start_time = timeit.default_timer()
