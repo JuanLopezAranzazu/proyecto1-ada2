@@ -28,7 +28,7 @@ class App:
 
     # Combobox para seleccionar el algoritmo
     ttk.Label(self.frame_form, text="Seleccionar algoritmo:").grid(row=3, column=0, columnspan=2)
-    self.combo_algorithms = ttk.Combobox(self.frame_form, values=["Fuerza Bruta", "Programación Voraz", "Programación Dinámica"])
+    self.combo_algorithms = ttk.Combobox(self.frame_form, values=["Fuerza Bruta", "Programación Voraz", "Programación Dinámica", "Costo Uniforme"])
     self.combo_algorithms.grid(row=4, column=0, columnspan=2)
     self.combo_algorithms.set("Fuerza Bruta")  # Valor por defecto
 
