@@ -23,6 +23,7 @@ def dynamic_programming(stringA, stringB, operations_dict):
       cost_advance=float("inf")
       cost_replace=float("inf")
 
+      # Caso cuando los caracteres son iguales
       if(stringA[i-1]==stringB[j-1]):
         cost_advance=dp[i-1][j-1]+operations_dict["advance"]
       else:

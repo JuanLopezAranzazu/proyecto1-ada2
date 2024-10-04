@@ -8,6 +8,7 @@ def greedy(stringA, stringB, operations_dict):
     cost_advance=float("inf")
     cost_replace=float("inf")
 
+    # Caso cuando los caracteres son iguales
     if(stringA[i]==stringB[j]):
       cost_advance=operations_dict["advance"]
     else:
@@ -16,7 +17,7 @@ def greedy(stringA, stringB, operations_dict):
     cost_delete=operations_dict["delete"]
     cost_insert=operations_dict["insert"]
 
-    # Seleccion de la operacion con menor costo
+    # Seleccionar la operacion con menor costo
     costs=[cost_advance, cost_delete, cost_replace, cost_insert]
     min_cost=min(costs)
     min_cost_index=costs.index(min_cost)

@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
-from terminal_inteligente import brute_force_ti, dp_ti, greedy_ti, uniform_cost_ti
-from subasta_publica import brute_force_sp, dp_sp, greedy_sp
+from terminal_inteligente import brute_force_terminal, dynamic_programming_terminal, greedy_terminal, uniform_cost_terminal
+from subasta_publica import brute_force_auction, dynamic_programming_auction, greedy_auction
 import timeit
 
 class App:
@@ -49,16 +49,16 @@ class App:
     self.root.grid_columnconfigure(1, weight=2)  # Columna de resultados
 
     self.algorithms_ti={
-      "Fuerza Bruta": brute_force_ti.brute_force,
-      "Programación Dinámica": dp_ti.dynamic_programming,
-      "Programación Voraz": greedy_ti.greedy,
-      "Costo Uniforme": uniform_cost_ti.uniform_cost,
+      "Fuerza Bruta": brute_force_terminal.brute_force,
+      "Programación Dinámica": dynamic_programming_terminal.dynamic_programming,
+      "Programación Voraz": greedy_terminal.greedy,
+      "Costo Uniforme": uniform_cost_terminal.uniform_cost,
     }
 
     self.algorithms_sp={
-      "Fuerza Bruta": brute_force_sp.brute_force,
-      "Programación Dinámica": dp_sp.dynamic_programming,
-      "Programación Voraz": greedy_sp.greedy,
+      "Fuerza Bruta": brute_force_auction.brute_force,
+      "Programación Dinámica": dynamic_programming_auction.dynamic_programming,
+      "Programación Voraz": greedy_auction.greedy,
     }
 
   def load_file(self):
