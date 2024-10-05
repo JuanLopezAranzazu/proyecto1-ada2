@@ -8,7 +8,7 @@ import timeit
 class App:
   def __init__(self, root):
     self.root = root
-    self.root.title("TERMINAL INTELIGENTE / SUBASTA PÚBLICA")
+    self.root.title("Proyecto 1 ADA II")
     self.create_widgets()
 
   def create_widgets(self):
@@ -48,14 +48,14 @@ class App:
     self.root.grid_columnconfigure(0, weight=1)  # Columna del formulario
     self.root.grid_columnconfigure(1, weight=2)  # Columna de resultados
 
-    self.algorithms_ti={
+    self.terminal={
       "Fuerza Bruta": brute_force_terminal.brute_force,
       "Programación Dinámica": dynamic_programming_terminal.dynamic_programming,
       "Programación Voraz": greedy_terminal.greedy,
       "Costo Uniforme": uniform_cost_terminal.uniform_cost,
     }
 
-    self.algorithms_sp={
+    self.auction={
       "Fuerza Bruta": brute_force_auction.brute_force,
       "Programación Dinámica": dynamic_programming_auction.dynamic_programming,
       "Programación Voraz": greedy_auction.greedy,
@@ -121,13 +121,13 @@ class App:
         return
       
       # Validar que el algoritmo esté implementado
-      if algorithm not in self.algorithms_ti:
+      if algorithm not in self.terminal:
         self.text_results.delete(1.0, tk.END)
         self.text_results.insert(tk.END, "Error: Algoritmo no implementado\n")
         return
 
       start_time = timeit.default_timer()
-      result=self.algorithms_ti[algorithm](stringA, stringB, operations_dict)
+      result=self.terminal[algorithm](stringA, stringB, operations_dict)
       elapsed_time = timeit.default_timer() - start_time
       print(result)
       print(f"Tiempo de ejecución: {elapsed_time:.10f} segundos")
@@ -140,13 +140,13 @@ class App:
         return
       
       # Validar que el algoritmo esté implementado
-      if algorithm not in self.algorithms_sp:
+      if algorithm not in self.auction:
         self.text_results.delete(1.0, tk.END)
         self.text_results.insert(tk.END, "Error: Algoritmo no implementado\n")
         return
       
       start_time = timeit.default_timer()
-      result=self.algorithms_sp[algorithm](A, B, offers)
+      result=self.auction[algorithm](A, B, offers)
       elapsed_time = timeit.default_timer() - start_time
       print(result)
       print(f"Tiempo de ejecución: {elapsed_time:.10f} segundos")
