@@ -23,10 +23,10 @@ Para correr las pruebas puedes ejecutar los siguientes comandos
 
 Para las pruebas de la terminal inteligente
 ```bash
-python ./app/test/test_terminal.py
+python -m unittest ./app/tests/test_terminal.py
 ```
 
 Para las pruebas de la subasta pública
 ```bash
-python ./app/test/test_auction.py
+python -m unittest ./app/tests/test_auction.py 
 ```
