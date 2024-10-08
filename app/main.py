@@ -9,6 +9,7 @@ class App:
   def __init__(self, root):
     self.root = root
     self.root.title("Proyecto 1 ADA II")
+    self.root.geometry("600x400")
     self.create_widgets()
 
   def create_widgets(self):
@@ -17,37 +18,48 @@ class App:
     self.frame_form.grid(row=0, column=0, sticky="nsew")
 
     # Combobox para seleccionar el problema
-    ttk.Label(self.frame_form, text="Seleccionar problema:").grid(row=0, column=0, columnspan=2)
+    ttk.Label(self.frame_form, text="Seleccionar problema:").grid(row=0, column=0, columnspan=2, sticky="ew")
     self.combo_problems = ttk.Combobox(self.frame_form, values=["Terminal Inteligente", "Subasta Pública"])
-    self.combo_problems.grid(row=1, column=0, columnspan=2)
+    self.combo_problems.grid(row=1, column=0, columnspan=2, sticky="ew")
     self.combo_problems.set("Terminal Inteligente")  # Valor por defecto
 
     # Botón para cargar el archivo
     self.btn_load = ttk.Button(self.frame_form, text="Cargar archivo", command=self.load_file)
-    self.btn_load.grid(row=2, column=0, columnspan=2)
+    self.btn_load.grid(row=2, column=0, columnspan=2, pady=10, sticky="ew")
 
     # Combobox para seleccionar el algoritmo
-    ttk.Label(self.frame_form, text="Seleccionar algoritmo:").grid(row=3, column=0, columnspan=2)
+    ttk.Label(self.frame_form, text="Seleccionar algoritmo:").grid(row=3, column=0, columnspan=2, sticky="ew")
     self.combo_algorithms = ttk.Combobox(self.frame_form, values=["Fuerza Bruta", "Programación Voraz", "Programación Dinámica", "Costo Uniforme"])
-    self.combo_algorithms.grid(row=4, column=0, columnspan=2)
+    self.combo_algorithms.grid(row=4, column=0, columnspan=2, sticky="ew")
     self.combo_algorithms.set("Fuerza Bruta")  # Valor por defecto
 
     # Botón para ejecutar el algoritmo
     self.btn_run = ttk.Button(self.frame_form, text="Ejecutar", command=self.run_algorithm)
-    self.btn_run.grid(row=5, column=0, columnspan=2)
+    self.btn_run.grid(row=5, column=0, columnspan=2, pady=10, sticky="ew")
 
     # Crear el marco para la columna de resultados
     self.frame_results = ttk.Frame(self.root, padding="10")
     self.frame_results.grid(row=0, column=1, sticky="nsew")
 
     # Área de resultados
-    self.text_results = tk.Text(self.frame_results, width=40, height=20)
-    self.text_results.grid(row=0, column=0)
+    self.text_results = tk.Text(self.frame_results, wrap="word", width=50, height=20)
+    self.text_results.grid(row=0, column=0, sticky="nsew")
+
+    # Configurar el frame_form para expandirse en ambas direcciones
+    self.frame_form.grid_columnconfigure(0, weight=1)  # Permitir crecimiento horizontal
+
+    # Configurar el frame_results para expandirse en ambas direcciones
+    self.frame_results.grid_rowconfigure(0, weight=1)  # Permitir crecimiento vertical
+    self.frame_results.grid_columnconfigure(0, weight=1)  # Permitir crecimiento horizontal
 
     # Ajustar el peso de las columnas
     self.root.grid_columnconfigure(0, weight=1)  # Columna del formulario
     self.root.grid_columnconfigure(1, weight=2)  # Columna de resultados
 
+    # Ajustar el peso de las filas
+    self.root.grid_rowconfigure(0, weight=1)  # Fila principal
+    
+    # Diccionario de algoritmos para cada problema
     self.terminal={
       "Fuerza Bruta": brute_force_terminal.brute_force,
       "Programación Dinámica": dynamic_programming_terminal.dynamic_programming,
