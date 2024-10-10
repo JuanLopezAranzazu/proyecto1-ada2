@@ -13,13 +13,14 @@ Resolver los problemas de la terminal inteligente y la subasta pública usando l
 
 ### Ejecución del programa
 
+Para correr el programa puedes ejecutar el siguiente comando:
 ```bash
 python ./app/main.py
 ```
 
-## Correr las pruebas
+### Correr las pruebas
 
-Para correr las pruebas puedes ejecutar los siguientes comandos
+Para correr las pruebas puedes ejecutar los siguientes comandos:
 
 Para las pruebas de la terminal inteligente
 ```bash
@@ -28,5 +29,5 @@ python -m unittest ./app/tests/test_terminal.py
 
 Para las pruebas de la subasta pública
 ```bash
-python -m unittest ./app/tests/test_auction.py 
+python -m unittest ./app/tests/test_auction.py
 ```

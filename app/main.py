@@ -10,6 +10,21 @@ class App:
     self.root = root
     self.root.title("Proyecto 1 ADA II")
     self.root.geometry("600x400")
+
+    # Diccionario de algoritmos para cada problema
+    self.terminal={
+      "Fuerza Bruta": brute_force_terminal.brute_force,
+      "Programación Dinámica": dynamic_programming_terminal.dynamic_programming,
+      "Programación Voraz": greedy_terminal.greedy,
+      "Costo Uniforme": uniform_cost_terminal.uniform_cost,
+    }
+
+    self.auction={
+      "Fuerza Bruta": brute_force_auction.brute_force,
+      "Programación Dinámica": dynamic_programming_auction.dynamic_programming,
+      "Programación Voraz": greedy_auction.greedy,
+    }
+
     self.create_widgets()
 
   def create_widgets(self):
@@ -58,20 +73,6 @@ class App:
 
     # Ajustar el peso de las filas
     self.root.grid_rowconfigure(0, weight=1)  # Fila principal
-    
-    # Diccionario de algoritmos para cada problema
-    self.terminal={
-      "Fuerza Bruta": brute_force_terminal.brute_force,
-      "Programación Dinámica": dynamic_programming_terminal.dynamic_programming,
-      "Programación Voraz": greedy_terminal.greedy,
-      "Costo Uniforme": uniform_cost_terminal.uniform_cost,
-    }
-
-    self.auction={
-      "Fuerza Bruta": brute_force_auction.brute_force,
-      "Programación Dinámica": dynamic_programming_auction.dynamic_programming,
-      "Programación Voraz": greedy_auction.greedy,
-    }
 
   def load_file(self):
     file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
