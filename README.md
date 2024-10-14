@@ -11,6 +11,10 @@
 
 Resolver los problemas de la terminal inteligente y la subasta pública usando los algoritmos de fuerza bruta, programación dinámica y programación voraz
 
+### Archivos de entrada de datos
+
+La carpeta [data_inputs](./app/data_inputs/) contiene archivos `.txt` que son utilizados como entradas de datos para el programa
+
 ### Ejecución del programa
 
 Para correr el programa puedes ejecutar el siguiente comando:
