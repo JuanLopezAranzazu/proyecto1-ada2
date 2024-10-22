@@ -6,9 +6,7 @@ def calculate_profit(offers, current_assignment):
     profit += current_assignment[i]*offers[i][0]
   return profit
 
-
 def brute_force(A, B, offers, i=0, current_assignment=[]):
-
   # Caso cuando ya no hay más ofertas
   if(i == len(offers)):
     profit = calculate_profit(offers, current_assignment)

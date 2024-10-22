@@ -4,7 +4,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from subasta_publica import brute_force_auction, dynamic_programming_auction, greedy_auction
+from public_auction import brute_force_auction, dynamic_programming_auction, greedy_auction
 
 class TestAuction(unittest.TestCase):
   def test_brute_force(self):
@@ -15,6 +15,13 @@ class TestAuction(unittest.TestCase):
         "offers": [[450, 100, 400], [400, 100, 400], [500, 400, 550]],
         "expected_max_profit": 472500,
         "expected_assignments": [350, 100, 550, 0]
+      },
+      {
+        "A": 2000,
+        "B": 100,
+        "offers": [],
+        "expected_max_profit": 200000,
+        "expected_assignments": [2000]
       }
     ]
     
@@ -38,6 +45,13 @@ class TestAuction(unittest.TestCase):
         "offers": [[450, 100, 400], [400, 100, 400], [500, 400, 600], [200, 50, 200]],
         "expected_max_profit": 480000,
         "expected_assignments": [400, 0, 600, 0, 0]
+      },
+      {
+        "A": 2000,
+        "B": 100,
+        "offers": [],
+        "expected_max_profit": 200000,
+        "expected_assignments": [2000]
       }
     ]
     
@@ -61,6 +75,13 @@ class TestAuction(unittest.TestCase):
         "offers": [[500, 100, 600], [450, 400, 800]],
         "expected_max_profit": 480000,
         "expected_assignments": [600, 400, 0]
+      },
+      {
+        "A": 2000,
+        "B": 100,
+        "offers": [],
+        "expected_max_profit": 200000,
+        "expected_assignments": [2000]
       }
     ]
     
@@ -78,4 +99,3 @@ class TestAuction(unittest.TestCase):
 
 if __name__ == '__main__':
   unittest.main()
-  

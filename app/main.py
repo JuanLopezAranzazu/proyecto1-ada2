@@ -1,15 +1,15 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
-from terminal_inteligente import brute_force_terminal, dynamic_programming_terminal, greedy_terminal, uniform_cost_terminal
-from subasta_publica import brute_force_auction, dynamic_programming_auction, greedy_auction
+from smart_terminal import brute_force_terminal, dynamic_programming_terminal, greedy_terminal, uniform_cost_terminal
+from public_auction import brute_force_auction, dynamic_programming_auction, greedy_auction
 import timeit
 
 class App:
   def __init__(self, root):
     self.root = root
     self.root.title("Proyecto 1 ADA II")
-    self.root.geometry("600x400")
+    self.root.geometry("800x500")
 
     # Diccionario de algoritmos para cada problema
     self.terminal={

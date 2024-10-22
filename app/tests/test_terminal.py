@@ -4,7 +4,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from terminal_inteligente import brute_force_terminal, dynamic_programming_terminal, greedy_terminal, uniform_cost_terminal
+from smart_terminal import brute_force_terminal, dynamic_programming_terminal, greedy_terminal, uniform_cost_terminal
 
 class TestTerminal(unittest.TestCase):
   def test_brute_force(self):
@@ -14,6 +14,24 @@ class TestTerminal(unittest.TestCase):
         "stringB": "ancestro",
         "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
         "expected_min_cost": 16
+      },
+      {
+        "stringA": "francesa",
+        "stringB": "",
+        "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
+        "expected_min_cost": 1
+      },
+      {
+        "stringA": "",
+        "stringB": "ancestro",
+        "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
+        "expected_min_cost": 16
+      },
+      {
+        "stringA": "ingeniero",
+        "stringB": "ingenieso",
+        "operations_dict": {"advance": 11,"delete": 7,"replace": 4,"insert": 5,"kill": 3},
+        "expected_min_cost": 40
       }
     ]
 
@@ -34,6 +52,24 @@ class TestTerminal(unittest.TestCase):
         "stringB": "inteligente",
         "operations_dict": {"advance": 1,"delete": 2,"replace": 4,"insert": 5,"kill": 3},
         "expected_min_cost": 38
+      },
+      {
+        "stringA": "terminal",
+        "stringB": "",
+        "operations_dict": {"advance": 1,"delete": 2,"replace": 4,"insert": 5,"kill": 3},
+        "expected_min_cost": 3
+      },
+      {
+        "stringA": "",
+        "stringB": "inteligente",
+        "operations_dict": {"advance": 1,"delete": 2,"replace": 4,"insert": 5,"kill": 3},
+        "expected_min_cost": 55
+      },
+      {
+        "stringA": "ingeniero",
+        "stringB": "ingenieso",
+        "operations_dict": {"advance": 11,"delete": 7,"replace": 4,"insert": 5,"kill": 3},
+        "expected_min_cost": 40
       }
     ]
     
@@ -54,6 +90,18 @@ class TestTerminal(unittest.TestCase):
         "stringB": "altruistic",
         "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
         "expected_min_cost": 29
+      },
+      {
+        "stringA": "algorithm",
+        "stringB": "",
+        "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
+        "expected_min_cost": 1
+      },
+      {
+        "stringA": "",
+        "stringB": "altruistic",
+        "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
+        "expected_min_cost": 20
       }
     ]
     
