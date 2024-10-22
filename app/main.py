@@ -11,7 +11,7 @@ class App:
     self.root.title("Proyecto 1 ADA II")
     self.root.geometry("800x500")
 
-    # Diccionario de algoritmos para cada problema
+    # Diccionario para los algoritmos de la terminal inteligente
     self.terminal={
       "Fuerza Bruta": brute_force_terminal.brute_force,
       "Programación Dinámica": dynamic_programming_terminal.dynamic_programming,
@@ -19,6 +19,7 @@ class App:
       "Costo Uniforme": uniform_cost_terminal.uniform_cost,
     }
 
+    # Diccionario para los algoritmos de la subasta pública
     self.auction={
       "Fuerza Bruta": brute_force_auction.brute_force,
       "Programación Dinámica": dynamic_programming_auction.dynamic_programming,
@@ -140,11 +141,16 @@ class App:
         return
 
       start_time = timeit.default_timer()
-      result=self.terminal[algorithm](stringA, stringB, operations_dict)
+      cost, ops=self.terminal[algorithm](stringA, stringB, operations_dict)
       elapsed_time = timeit.default_timer() - start_time
-      print(result)
+      print(f"Costo: {cost}")
+      print(f"Operaciones: {ops}")
       print(f"Tiempo de ejecución: {elapsed_time:.10f} segundos")
 
+      result = f"Costo: {cost}\n"
+      for operation in ops:
+        result += f"{operation}\n"
+      
     elif problem == "Subasta Pública":
       # Validar que los datos estén cargados
       if not 'A' in globals() or not 'B' in globals() or not 'n' in globals() or not 'offers' in globals():
@@ -159,10 +165,15 @@ class App:
         return
       
       start_time = timeit.default_timer()
-      result=self.auction[algorithm](A, B, offers)
+      max_profit, assignments=self.auction[algorithm](A, B, offers)
       elapsed_time = timeit.default_timer() - start_time
-      print(result)
+      print(f"Ganancia máxima: {max_profit}")
+      print(f"Asignaciones: {assignments}")
       print(f"Tiempo de ejecución: {elapsed_time:.10f} segundos")
+
+      result = f"Ganancia máxima: {max_profit}\n"
+      for assignment in assignments:
+        result += f"{assignment}\n"
 
     # Mostrar resultados en el Text widget
     self.text_results.delete(1.0, tk.END)

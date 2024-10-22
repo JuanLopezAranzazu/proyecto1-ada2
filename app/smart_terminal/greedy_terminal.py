@@ -60,4 +60,11 @@ def greedy(stringA, stringB, operations_dict):
     cost+=cost_insert
     ops+=operations_insert
 
+  # Caso donde se usa kill y se insertan las letras restantes
+  cost_kill = operations_dict["kill"] + operations_dict["insert"]*len(stringB)
+
+  if(cost_kill<cost):
+    cost=cost_kill
+    ops=["kill"]+[f"insert {stringB[k]}" for k in range(len(stringB))]
+
   return cost, ops

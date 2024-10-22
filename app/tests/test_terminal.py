@@ -89,7 +89,7 @@ class TestTerminal(unittest.TestCase):
         "stringA": "algorithm",
         "stringB": "altruistic",
         "operations_dict": {"advance": 1,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
-        "expected_min_cost": 29
+        "expected_min_cost": 21
       },
       {
         "stringA": "algorithm",
