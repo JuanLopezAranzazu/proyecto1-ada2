@@ -11,9 +11,11 @@
 
 Resolver los problemas de la terminal inteligente y la subasta pública usando los algoritmos de fuerza bruta, programación dinámica y programación voraz
 
-### Archivos de entrada de datos
+### Archivos de entrada y salida de datos
 
-La carpeta [data_inputs](./app/data_inputs/) contiene archivos `.txt` que son utilizados como entradas de datos para el programa
+La carpeta [data_inputs](./data_inputs/) contiene archivos `.txt` que son utilizados como entradas de datos para el programa
+
+La carpeta [data_outputs](./data_outputs/) contiene las gráficas de tiempo de los algoritmos
 
 ### Instalar dependencias
 
@@ -32,7 +34,7 @@ python ./app/main.py
 
 ### Correr las pruebas
 
-Para correr las pruebas puedes ejecutar los siguientes comandos:
+Para correr las pruebas de los algoritmos, ejecutar los siguientes comandos:
 
 Para las pruebas de la terminal inteligente
 ```bash
@@ -44,14 +46,16 @@ Para las pruebas de la subasta pública
 python -m unittest ./app/tests/test_auction.py
 ```
 
-### Mostrar las gráficas de tiempo de ejecución
+### Crear las gráficas de tiempo de ejecución
 
-Para mostrar las gráficas de la terminal inteligente
+Para crear las gráficas de tiempo, ejecutar los siguientes comandos:
+
+Para crear las gráficas de la terminal inteligente
 ```bash
 python ./app/graphics/terminal_graphics.py
 ```
 
-Para mostrar las gráficas de la subasta pública
+Para crear las gráficas de la subasta pública
 ```bash
 python ./app/graphics/auction_graphics.py
 ```

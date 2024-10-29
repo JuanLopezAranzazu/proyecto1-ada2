@@ -7,7 +7,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 from public_auction import brute_force_auction, dynamic_programming_auction, greedy_auction
 
-def plot_time_complexity():
+output_dir = "data_outputs"
+
+def graph_all_cases():
+  os.makedirs(output_dir, exist_ok=True)
+
+  # Casos de prueba
   test_cases = [
     {
       "A": 1000,
@@ -36,12 +41,14 @@ def plot_time_complexity():
     }
   ]
 
+  # Resultados de los algoritmos
   results = {
     'brute_force': [],
     'dynamic_programming': [],
     'greedy': [],
   }
 
+  # Ejecución de los algoritmos
   for test_case in test_cases:
     A = test_case["A"]
     B = test_case["B"]
@@ -77,21 +84,28 @@ def plot_time_complexity():
   plt.title('Comparación de algoritmos de la subasta pública')
   plt.legend()
   plt.grid(True)
-  plt.show()
+  # Guardar gráfico
+  plt.savefig(os.path.join(output_dir, "public_auction_all_cases.png"))
+  plt.close()
 
-def plot_single_case():
+def graph_single_case():
+  os.makedirs(output_dir, exist_ok=True)
+
+  # Caso de prueba
   test_case = {
     "A": 1000,
     "B": 100,
     "offers": [[450, 100, 400], [400, 100, 400], [500, 400, 550]],
   }
 
+  # Resultados de los algoritmos
   results = {
     'brute_force': 0,
     'dynamic_programming': 0,
     'greedy': 0,
   }
 
+  # Ejecución de los algoritmos
   A = test_case["A"]
   B = test_case["B"]
   offers = test_case["offers"]
@@ -123,9 +137,10 @@ def plot_single_case():
   plt.ylabel('Tiempo de ejecución (s)')
   plt.title('Comparación de algoritmos de la subasta pública')
   plt.yscale('log')
-  plt.show()
-
+  # Guardar gráfico
+  plt.savefig(os.path.join(output_dir, "public_auction_single_case.png"))
+  plt.close()
 
 if __name__ == '__main__':
-  plot_time_complexity()
-  plot_single_case()
+  graph_all_cases()
+  graph_single_case()

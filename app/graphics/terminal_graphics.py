@@ -7,7 +7,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 from smart_terminal import brute_force_terminal, dynamic_programming_terminal, greedy_terminal
 
-def plot_time_complexity():
+output_dir = "data_outputs"
+
+def graph_all_cases():
+  os.makedirs(output_dir, exist_ok=True)
+
+  # Casos de prueba
   test_cases = [
     {
       "stringA": "francesa",
@@ -36,12 +41,14 @@ def plot_time_complexity():
     }
   ]
 
+  # Resultados de los algoritmos
   results = {
     'brute_force': [],
     'dynamic_programming': [],
     'greedy': [],
   }
 
+  # Ejecución de los algoritmos
   for test_case in test_cases:
     stringA = test_case["stringA"]
     stringB = test_case["stringB"]
@@ -77,26 +84,33 @@ def plot_time_complexity():
   plt.title('Comparación de algoritmos de la terminal inteligente')
   plt.legend()
   plt.grid(True)
-  plt.show()
+  # Guardar gráfico
+  plt.savefig(os.path.join(output_dir, "smart_terminal_all_cases.png"))
+  plt.close()
 
 def plot_single_case():
+  os.makedirs(output_dir, exist_ok=True)
+
+  # Caso de prueba
   test_case = {
     "stringA": "programming",
     "stringB": "programmer",
     "operations_dict": {"advance": 8,"delete": 2,"replace": 3,"insert": 2,"kill": 1},
   }
 
+  # Resultados de los algoritmos
   results = {
     'brute_force': 0,
     'dynamic_programming': 0,
     'greedy': 0,
   }
 
-  print(f'Caso de prueba: stringA={test_case["stringA"]}, stringB={test_case["stringB"]}, operations_dict={test_case["operations_dict"]}')
-
+  # Ejecución de los algoritmos
   stringA = test_case["stringA"]
   stringB = test_case["stringB"]
   operations_dict = test_case["operations_dict"]
+
+  print(f'Caso de prueba: stringA={stringA}, stringB={stringB}, operations_dict={operations_dict}')
 
   print('Fuerza bruta')
   time = timeit.timeit(lambda: brute_force_terminal.brute_force(stringA, stringB, operations_dict), number=1)
@@ -123,8 +137,10 @@ def plot_single_case():
   plt.ylabel('Tiempo de ejecución (s)')
   plt.title('Comparación de algoritmos de la terminal inteligente')
   plt.yscale('log')
-  plt.show()
+  # Guardar gráfico
+  plt.savefig(os.path.join(output_dir, "smart_terminal_single_case.png"))
+  plt.close()
 
 if __name__ == '__main__':
-  plot_time_complexity()
+  graph_all_cases()
   plot_single_case()
