@@ -141,6 +141,65 @@ def graph_single_case():
   plt.savefig(os.path.join(output_dir, "public_auction_single_case.png"))
   plt.close()
 
+# Tiempo promedio con N ejecuciones
+def average_graph(N=50):
+  os.makedirs(output_dir, exist_ok=True)
+
+  # Caso de prueba
+  test_case = {
+    "A": 1000,
+    "B": 100,
+    "offers": [[450, 100, 400], [400, 100, 400], [500, 400, 550]],
+  }
+  
+  # Resultados de los algoritmos
+  results = {
+    'brute_force': 0,
+    'dynamic_programming': 0,
+    'greedy': 0,
+  }
+
+  # Ejecución de los algoritmos
+  for i in range(N):
+    A = test_case["A"]
+    B = test_case["B"]
+    offers = test_case["offers"]
+
+    print(f'Caso de prueba: A={A}, B={B}, offers={offers}')
+
+    print('Fuerza bruta')
+    time = timeit.timeit(lambda: brute_force_auction.brute_force(A, B, offers), number=1)
+    results['brute_force'] += time
+    print(f'Tiempo de ejecución: {time}s')
+
+    print('Programación dinámica')
+    time = timeit.timeit(lambda: dynamic_programming_auction.dynamic_programming(A, B, offers), number=1)
+    results['dynamic_programming'] += time
+    print(f'Tiempo de ejecución: {time}s')
+
+    print('Algoritmo voraz')
+    time = timeit.timeit(lambda: greedy_auction.greedy(A, B, offers), number=1)
+    results['greedy'] += time
+    print(f'Tiempo de ejecución: {time}s')
+
+  for algorithm in results.keys():
+    results[algorithm] /= N
+  
+  plt.figure(figsize=(10, 5))
+  plt.bar(results.keys(), results.values(), color=['blue', 'orange', 'green'])
+
+  for i, v in enumerate(results.values()):
+    plt.text(i, v, f'{v:.2f}', ha='center', va='bottom')
+
+  plt.xlabel('Algoritmos')
+  plt.ylabel('Tiempo de ejecución (s)')
+  plt.title(f'Promedio de tiempo algoritmos de la subasta pública (N={N})')
+  plt.yscale('log')
+  # Guardar gráfico
+  plt.savefig(os.path.join(output_dir, "public_auction_average.png"))
+  plt.close()
+
 if __name__ == '__main__':
   graph_all_cases()
   graph_single_case()
+  average_graph()
